@@ -16,3 +16,9 @@
 \\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\ToDoList.csproj.CoreCompileInputs.cache
 \\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\ToDoList.exe
 \\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\ToDoList.pdb
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\bin\Debug\MaterialDesignColors.dll
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\bin\Debug\MaterialDesignThemes.Wpf.dll
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\bin\Debug\MaterialDesignThemes.Wpf.pdb
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\bin\Debug\MaterialDesignThemes.Wpf.xml
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\App.baml
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\ToDoList.csproj.CopyComplete
