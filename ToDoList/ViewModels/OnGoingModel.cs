@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToDoList.ViewModels
 {
-    class OnGoingModel
+    public class OnGoingModel
     {
     }
 }

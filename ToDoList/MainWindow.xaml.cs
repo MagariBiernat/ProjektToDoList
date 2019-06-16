@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using ToDoList.ViewModels;
 
 namespace ToDoList
 {
@@ -25,8 +26,16 @@ namespace ToDoList
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new OnGoingModel();
         }
 
-      
+        private void OnGoingTasks_Bttn_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new OnGoingModel();
+        }
+        private void CompletedTasks_Bttn_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new CompletedModel();
+        }
     }
 }

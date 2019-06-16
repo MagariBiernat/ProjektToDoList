@@ -33,8 +33,8 @@ namespace ToDoList.Views
         }
         void Displaydata()
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C|DataDirectory|\Database1.mdf;Integrated Security=True");
-            SqlCommand comm = new SqlCommand("SELECT id, name, datetime, priority FROM tasks", con);
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
+            SqlCommand comm = new SqlCommand("SELECT text, data, priority FROM tasks", con);
             SqlDataAdapter sda = new SqlDataAdapter(comm);
             DataTable dt = new DataTable("Tasks");
             sda.Fill(dt);

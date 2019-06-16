@@ -5,8 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ToDoList.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="Window_Loaded_Completed"
+             >
     <Grid>
-            
+        <DataGrid AutoGenerateColumns="False"  x:Name="CompletedTasks">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding text}" Width="245" MaxWidth="245" Header="Nazwa zadania">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding data}" Width="170" MaxWidth="170" Header="Data i godzina">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding priority}" Width="110" MaxWidth="110" Header="Waga zadania">
+                <DataGridTextColumn.ElementStyle>
+                    <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding IsCompleted}" Width="120" MaxWidth="120" Header="Ukonczono?">
+                <DataGridTextColumn.ElementStyle>
+                    <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </UserControl>

@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
+        xmlns:viewmodels="clr-namespace:ToDoList.ViewModels"
+        xmlns:views="clr-namespace:ToDoList.Views"
         xmlns:local="clr-namespace:ToDoList"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -44,27 +45,65 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <DataTemplate x:Name="OnGoingTemplate" DataType="{x:Type viewmodels:OnGoingModel}">
+            <views:OnGoing DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="CompletedTemplate" DataType="{x:Type viewmodels:CompletedModel}">
+            <views:Completed DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
     
     <Grid>
         <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="215" Margin="10,10,0,0"/>
         <Grid HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="215" Margin="10,115,0,0"/>
         <Grid HorizontalAlignment="Left" Height="435" VerticalAlignment="Top" Width="707" Margin="225,10,0,0">
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,0,0,0" Height="65"/>
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="254,0,0,0" Height="65"/>
+            <Button x:Name="OnGoingTasks_Bttn" Content="Aktualne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,0,0,0" Height="65" Click="OnGoingTasks_Bttn_Click"/>
+            <Button x:Name="CompletedTasks_Bttn" Content="Ukonczone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="257,0,0,0" Height="65" Click="CompletedTasks_Bttn_Click"/>
             <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="524,0,0,0" Height="65"/>
-            <Grid HorizontalAlignment="Left" Height="343" VerticalAlignment="Top" Width="687" Margin="10,82,0,0"/>
-            <ToggleButton Margin="5" HorizontalAlignment="Left"
+            <Grid HorizontalAlignment="Left" Height="343" VerticalAlignment="Top" Width="687" Margin="10,82,0,0">
+                <!--- <ToggleButton Margin="5" HorizontalAlignment="Left"
                           Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"
-                          IsChecked="False"/>
+                          IsChecked="False"/> -->
+                <ContentControl Content="{Binding}"/>
+            </Grid>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="109" VerticalAlignment="Bottom" Width="922" Margin="10,450,0,0">
-            <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,42,0,0" Width="160" Height="29"/>
-            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="218,42,0,0"/>
-            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="324,42,0,0"/>
-            <TextBox HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="300" Margin="421,42,0,0"/>
+            <DatePicker HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Data wydarzenia" VerticalAlignment="Top" Margin="31,42,0,0" Width="160" Height="29"/>
+            <ComboBox materialDesign:HintAssist.Hint="Godzina" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="218,42,0,0">
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>7</ComboBoxItem>
+                <ComboBoxItem>8</ComboBoxItem>
+                <ComboBoxItem>9</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>11</ComboBoxItem>
+                <ComboBoxItem>12</ComboBoxItem>
+                <ComboBoxItem>13</ComboBoxItem>
+                <ComboBoxItem>14</ComboBoxItem>
+                <ComboBoxItem>15</ComboBoxItem>
+                <ComboBoxItem>16</ComboBoxItem>
+                <ComboBoxItem>17</ComboBoxItem>
+                <ComboBoxItem>18</ComboBoxItem>
+                <ComboBoxItem>19</ComboBoxItem>
+                <ComboBoxItem>20</ComboBoxItem>
+                <ComboBoxItem>21</ComboBoxItem>
+                <ComboBoxItem>22</ComboBoxItem>
+                <ComboBoxItem>23</ComboBoxItem>
+                <ComboBoxItem>24</ComboBoxItem>
+            </ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="Minuta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="324,42,0,0">
+                <ComboBoxItem>0</ComboBoxItem>
+                <ComboBoxItem>15</ComboBoxItem>
+                <ComboBoxItem>30</ComboBoxItem>
+                <ComboBoxItem>45</ComboBoxItem>
+            </ComboBox>
+            <TextBox HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300" materialDesign:HintAssist.Hint="Nazwa wydarzenia" Margin="421,42,0,0"/>
             
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="50" Margin="774,21,0,0"/>
+            <Button x:Name="Create_Task" Content="Utwórz zadanie" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="50" Margin="774,21,0,0"/>
         </Grid>
     </Grid>
 </Window>    

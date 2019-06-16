@@ -11,10 +11,30 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False"  x:Name="OnGoingTasks">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" Width="50" Header="ID"/>
-                <DataGridTextColumn Binding="{Binding text}" Width="200" Header="Nazwa zadania"/>
-                <DataGridTextColumn Binding="{Binding data}" Width="100" Header="Data i godzina"/>
-                <DataGridTextColumn Binding="{Binding priority}" Width="80" Header="Waga zadania"/>
+                <DataGridTextColumn Binding="{Binding text}" Width="300" Header="Nazwa zadania">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding data}" Width="200" Header="Data i godzina">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding priority}" Width="120" Header="Waga zadania">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
 
         </DataGrid>
