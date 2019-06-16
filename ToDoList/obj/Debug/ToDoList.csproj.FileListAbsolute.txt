@@ -22,3 +22,7 @@
 \\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\bin\Debug\MaterialDesignThemes.Wpf.xml
 \\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\App.baml
 \\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\ToDoList.csproj.CopyComplete
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\Completed.g.cs
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\OnGoing.g.cs
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\Completed.baml
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\OnGoing.baml

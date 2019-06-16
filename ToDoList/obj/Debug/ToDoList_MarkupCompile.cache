@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\
 ToDoList
 none
 false
 DEBUG;TRACE
-C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\App.xaml
-11151548125
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\App.xaml
+3229005626
 2-1995130054
-62048975704
-151253399385
-MainWindow.xaml;
+9-1744400628
+15-568764187
+MainWindow.xaml;Views\Completed.xaml;Views\OnGoing.xaml;
 
-True
+False
 

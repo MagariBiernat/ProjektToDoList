@@ -27,7 +27,7 @@ namespace ToDoList.Views
             InitializeComponent();
         }
 
-        private void WindowLoaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Displaydata();
         }
