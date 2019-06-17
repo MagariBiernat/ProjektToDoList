@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using LiveCharts.Wpf;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -29,6 +30,7 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
+using ToDoList.Gauges;
 using ToDoList.Views;
 
 
