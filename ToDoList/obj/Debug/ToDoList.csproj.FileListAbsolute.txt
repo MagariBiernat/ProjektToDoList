@@ -55,3 +55,4 @@ C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\Pro
 C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\ToDoList.exe
 C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\ToDoList.pdb
 C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\GeneratedInternalTypeHelper.g.cs
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\GeneratedInternalTypeHelper.g.cs

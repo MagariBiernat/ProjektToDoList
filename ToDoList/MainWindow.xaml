@@ -12,7 +12,7 @@
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
+     Background="#FFD700"
      FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Title="ToDo" Foreground="Black" MinHeight="600" MinWidth="450" Height="600" Width="950" MaxHeight="600" MaxWidth="950">
@@ -45,12 +45,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <DataTemplate x:Name="OnGoingTemplate" DataType="{x:Type viewmodels:OnGoingModel}">
+       <!-- <DataTemplate x:Name="OnGoingTemplate" DataType="{x:Type viewmodels:OnGoingModel}">
             <views:OnGoing DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="CompletedTemplate" DataType="{x:Type viewmodels:CompletedModel}">
             <views:Completed DataContext="{Binding}"/>
         </DataTemplate>
+        -->
+        
     </Window.Resources>
     
     <Grid>
@@ -68,8 +70,9 @@
             </Grid>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="109" VerticalAlignment="Bottom" Width="922" Margin="10,450,0,0">
-            <DatePicker HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Data wydarzenia" VerticalAlignment="Top" Margin="31,42,0,0" Width="160" Height="29"/>
-            <ComboBox materialDesign:HintAssist.Hint="Godzina" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="218,42,0,0">
+            <DatePicker HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Top" Margin="450,42,0,0" Width="120" Height="29"/>
+            <materialDesign:TimePicker HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Godzina" VerticalAlignment="Top" Margin="590,42,0,0" Width="100" Height="29"/>
+            <!-- <ComboBox materialDesign:HintAssist.Hint="Godzina" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="218,42,0,0">
                 <ComboBoxItem>1</ComboBoxItem>
                 <ComboBoxItem>2</ComboBoxItem>
                 <ComboBoxItem>3</ComboBoxItem>
@@ -100,10 +103,10 @@
                 <ComboBoxItem>15</ComboBoxItem>
                 <ComboBoxItem>30</ComboBoxItem>
                 <ComboBoxItem>45</ComboBoxItem>
-            </ComboBox>
-            <TextBox HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300" materialDesign:HintAssist.Hint="Nazwa wydarzenia" Margin="421,42,0,0"/>
+            </ComboBox> -->
+            <TextBox HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Width="300" materialDesign:HintAssist.Hint="Nazwa zadania" Margin="130,42,0,0"/>
             
-            <Button x:Name="Create_Task" Content="Utwórz zadanie" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="50" Margin="774,21,0,0"/>
+            <Button x:Name="Create_Task" Content="Utwórz zadanie" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="50" Margin="740,21,0,0"/>
         </Grid>
     </Grid>
 </Window>    
