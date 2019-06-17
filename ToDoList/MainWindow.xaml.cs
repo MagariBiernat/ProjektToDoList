@@ -37,5 +37,15 @@ namespace ToDoList
         {
             DataContext = new CompletedModel();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new UdaneModel();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DataContext = new NieUdaneModel();
+        }
     }
 }

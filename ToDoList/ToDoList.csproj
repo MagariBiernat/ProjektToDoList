@@ -77,12 +77,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\CompletedModel.cs" />
+    <Compile Include="ViewModels\NieUdaneModel.cs" />
     <Compile Include="ViewModels\OnGoingModel.cs" />
+    <Compile Include="ViewModels\UdaneModel.cs" />
     <Compile Include="Views\Completed.xaml.cs">
       <DependentUpon>Completed.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NieUdane.xaml.cs">
+      <DependentUpon>NieUdane.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\OnGoing.xaml.cs">
       <DependentUpon>OnGoing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Udane.xaml.cs">
+      <DependentUpon>Udane.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -100,7 +108,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\NieUdane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\OnGoing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Udane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
