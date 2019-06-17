@@ -45,13 +45,13 @@
                 </Setter.Value>
             </Setter>
         </Style>
-       <!-- <DataTemplate x:Name="OnGoingTemplate" DataType="{x:Type viewmodels:OnGoingModel}">
+        <DataTemplate x:Name="OnGoingTemplate" DataType="{x:Type viewmodels:OnGoingModel}">
             <views:OnGoing DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="CompletedTemplate" DataType="{x:Type viewmodels:CompletedModel}">
             <views:Completed DataContext="{Binding}"/>
         </DataTemplate>
-        -->
+        
         
     </Window.Resources>
     
@@ -72,38 +72,7 @@
         <Grid HorizontalAlignment="Left" Height="109" VerticalAlignment="Bottom" Width="922" Margin="10,450,0,0">
             <DatePicker HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Top" Margin="450,42,0,0" Width="120" Height="29"/>
             <materialDesign:TimePicker HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Godzina" VerticalAlignment="Top" Margin="590,42,0,0" Width="100" Height="29"/>
-            <!-- <ComboBox materialDesign:HintAssist.Hint="Godzina" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="218,42,0,0">
-                <ComboBoxItem>1</ComboBoxItem>
-                <ComboBoxItem>2</ComboBoxItem>
-                <ComboBoxItem>3</ComboBoxItem>
-                <ComboBoxItem>4</ComboBoxItem>
-                <ComboBoxItem>5</ComboBoxItem>
-                <ComboBoxItem>6</ComboBoxItem>
-                <ComboBoxItem>7</ComboBoxItem>
-                <ComboBoxItem>8</ComboBoxItem>
-                <ComboBoxItem>9</ComboBoxItem>
-                <ComboBoxItem>10</ComboBoxItem>
-                <ComboBoxItem>11</ComboBoxItem>
-                <ComboBoxItem>12</ComboBoxItem>
-                <ComboBoxItem>13</ComboBoxItem>
-                <ComboBoxItem>14</ComboBoxItem>
-                <ComboBoxItem>15</ComboBoxItem>
-                <ComboBoxItem>16</ComboBoxItem>
-                <ComboBoxItem>17</ComboBoxItem>
-                <ComboBoxItem>18</ComboBoxItem>
-                <ComboBoxItem>19</ComboBoxItem>
-                <ComboBoxItem>20</ComboBoxItem>
-                <ComboBoxItem>21</ComboBoxItem>
-                <ComboBoxItem>22</ComboBoxItem>
-                <ComboBoxItem>23</ComboBoxItem>
-                <ComboBoxItem>24</ComboBoxItem>
-            </ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Minuta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="324,42,0,0">
-                <ComboBoxItem>0</ComboBoxItem>
-                <ComboBoxItem>15</ComboBoxItem>
-                <ComboBoxItem>30</ComboBoxItem>
-                <ComboBoxItem>45</ComboBoxItem>
-            </ComboBox> -->
+            
             <TextBox HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Width="300" materialDesign:HintAssist.Hint="Nazwa zadania" Margin="130,42,0,0"/>
             
             <Button x:Name="Create_Task" Content="Utwórz zadanie" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="50" Margin="740,21,0,0"/>

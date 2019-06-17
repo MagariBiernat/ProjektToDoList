@@ -34,11 +34,21 @@ namespace ToDoList.Views
         void Displaydata()
         {
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
-            SqlCommand comm = new SqlCommand("SELECT text, data, priority, IsCompleted FROM taskscompleted", con);
+            SqlCommand comm = new SqlCommand("SELECT text, data FROM taskscompleted ORDER BY data ASC", con);
             SqlDataAdapter sda = new SqlDataAdapter(comm);
             DataTable dt = new DataTable("TasksCompleted");
             sda.Fill(dt);
             CompletedTasks.ItemsSource = dt.DefaultView;
         }
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("hello");
+        }
+        private void Nieudane_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("hello_nieudane");
+        }
+
     }
+    
 }
