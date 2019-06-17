@@ -34,7 +34,7 @@ namespace ToDoList.Views
         void Displaydata()
         {
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
-            SqlCommand comm = new SqlCommand("SELECT text, data FROM tasks ORDER BY data ASC", con);
+            SqlCommand comm = new SqlCommand("SELECT Id, text, data FROM tasks ORDER BY data ASC", con);
             SqlDataAdapter sda = new SqlDataAdapter(comm);
             DataTable dt = new DataTable("Tasks");
             sda.Fill(dt);
@@ -43,11 +43,7 @@ namespace ToDoList.Views
 
         private void Usun_Click(object sender, RoutedEventArgs e)
         {
-            var menuItem = (MenuItem)sender;
-            var contextMenu = (ContextMenu)menuItem.Parent;
-            var item = (DataGrid)contextMenu.PlacementTarget;
-            var item1 = (string)item.SelectedCells[0].Item;
-            MessageBox.Show(item1);
+            
         }
     }
 

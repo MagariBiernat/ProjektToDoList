@@ -45,32 +45,36 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <!-- "<DataTemplate x:Name="OnGoingTemplate" DataType="{x:Type viewmodels:OnGoingModel}">
+        <DataTemplate x:Name="OnGoingTemplate" DataType="{x:Type viewmodels:OnGoingModel}">
             <views:OnGoing DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="CompletedTemplate" DataType="{x:Type viewmodels:CompletedModel}">
             <views:Completed DataContext="{Binding}"/>
         </DataTemplate>
-        -->
+        <DataTemplate x:Name="UdaneTemplate" DataType="{x:Type viewmodels:UdaneModel}">
+            <views:Udane DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="NieUdaneTemplate" DataType="{x:Type viewmodels:NieUdaneModel}">
+            <views:NieUdane DataContext="{Binding}"/>
+        </DataTemplate>
         
         
     </Window.Resources>
     
     <Grid>
         <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="215" Margin="10,10,0,0"/>
-        <Grid HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="215" Margin="10,115,0,0">
-</Grid>
-
+        <Grid HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="215" Margin="10,115,0,0"/>
         <Grid HorizontalAlignment="Left" Height="435" VerticalAlignment="Top" Width="707" Margin="225,10,0,0">
             <Button x:Name="OnGoingTasks_Bttn" Content="Aktualne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,0,0,0" Height="65" Click="OnGoingTasks_Bttn_Click"/>
             <Button x:Name="CompletedTasks_Bttn" Content="Ukonczone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="257,0,0,0" Height="65" Click="CompletedTasks_Bttn_Click"/>
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="524,0,0,0" Height="65"/>
+            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="423,0,0,0" Height="65" Click="Button_Click"/>
             <Grid HorizontalAlignment="Left" Height="343" VerticalAlignment="Top" Width="687" Margin="10,82,0,0">
                 <!--- <ToggleButton Margin="5" HorizontalAlignment="Left"
                           Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"
                           IsChecked="False"/> -->
                 <ContentControl Content="{Binding}"/>
             </Grid>
+            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="566,0,0,0" Height="65" Click="Button_Click_1"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="109" VerticalAlignment="Bottom" Width="922" Margin="10,450,0,0">
             <DatePicker HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Top" Margin="450,42,0,0" Width="120" Height="29"/>
@@ -80,7 +84,5 @@
             
             <Button x:Name="Create_Task" Content="Utwórz zadanie" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="50" Margin="740,21,0,0"/>
         </Grid>
-        <TreeView HorizontalAlignment="Left" Height="100" Margin="310,275,0,0" VerticalAlignment="Top" Width="100"/>
-
     </Grid>
 </Window>    

@@ -9,8 +9,15 @@
              Loaded="Window_Loaded_Completed"
              >
     <Grid>
-        <DataGrid IsReadOnly="True" AutoGenerateColumns="False"  x:Name="CompletedTasks">
+        <DataGrid SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False"  x:Name="CompletedTasks">
             <DataGrid.Columns>
+                <DataGridTextColumn Visibility="Hidden" IsReadOnly="True" Binding="{Binding Id}" Width="120" MaxWidth="120" Header="Ukonczono?">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding text}" Width="245" MaxWidth="245" Header="Nazwa zadania">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
@@ -25,13 +32,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding IsCompleted}" Width="120" MaxWidth="120" Header="Ukonczono?">
-                <DataGridTextColumn.ElementStyle>
-                    <Style>
-                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                        </Style>
-                </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
+                
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>

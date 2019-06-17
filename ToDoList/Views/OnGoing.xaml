@@ -9,8 +9,15 @@
              Loaded="Window_Loaded"
              >
     <Grid>
-        <DataGrid AutoGenerateColumns="False"  x:Name="OnGoingTasks">
+        <DataGrid SelectionMode="Single" AutoGenerateColumns="False"  x:Name="OnGoingTasks">
             <DataGrid.Columns>
+                <DataGridTextColumn Visibility="Hidden" IsReadOnly="True" Binding="{Binding Id}" Width="120" MaxWidth="120" Header="Ukonczono?">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding text}" Width="300" Header="Nazwa zadania">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
