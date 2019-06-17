@@ -77,9 +77,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\CompletedModel.cs" />
+    <Compile Include="ViewModels\Guages.cs" />
     <Compile Include="ViewModels\OnGoingModel.cs" />
     <Compile Include="Views\Completed.xaml.cs">
       <DependentUpon>Completed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Guages.xaml.cs">
+      <DependentUpon>Guages.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OnGoing.xaml.cs">
       <DependentUpon>OnGoing.xaml</DependentUpon>
@@ -97,6 +101,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Completed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Guages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
