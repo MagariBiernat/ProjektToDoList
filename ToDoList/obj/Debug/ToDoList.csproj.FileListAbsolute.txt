@@ -60,3 +60,7 @@ C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\Pro
 C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\Views\Udane.g.cs
 C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\Views\NieUdane.baml
 C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\Views\Udane.baml
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\NieUdane.g.cs
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\Udane.g.cs
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\NieUdane.baml
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\Udane.baml
