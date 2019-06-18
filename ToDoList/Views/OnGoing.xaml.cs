@@ -22,6 +22,7 @@ namespace ToDoList.Views
     /// </summary>
     public partial class OnGoing : UserControl
     {
+        private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
         public OnGoing()
         {
             InitializeComponent();
@@ -44,10 +45,28 @@ namespace ToDoList.Views
         {
             Displaydata();
         }
+        void DeleteRow(string a)
+        {
+            SqlCommand command = new SqlCommand();
+            conn.Open();
+            command.CommandText = "DELETE FROM Tasks WHERE Id = '" + a + "' ;";
+            command.Connection = conn;
+            command.ExecuteNonQuery();
+            conn.Close();
+
+        }
         private void Usun_Click(object sender, RoutedEventArgs e)
         {
-            
+            DataRowView drv = (DataRowView)OnGoingTasks.SelectedItem;
+            string a = drv["Id"].ToString();
+            DeleteRow(a);
+            Displaydata();
         }
+        
+        
+            
+
+        
     }
 
 }

@@ -56,23 +56,24 @@ namespace ToDoList
             DataContext = new NieUdaneModel();
             DejtaContext = "NieUdaneModel";
         }
-        public event PropertyChangedEventHandler PropertyChanged;
         
-private void Create_Task_Query(string name_of_task, string date, string time)
+
+        private void Create_Task_Query(string name_of_task, string date, string time)
         {
             SqlCommand command = new SqlCommand();
             
             command.CommandText = "INSERT INTO Tasks (text, data) VALUES ( '" + name_of_task + "' , convert(datetime,'" + date + " " + time + " AM', 103));";
             
+
             try
             {
                 conn.Open();
                 command.Connection = conn;
                 command.ExecuteNonQuery();
-              /*  if (DejtaContext == "OnGoingModel")
+               if (DejtaContext == "OnGoingModel")
                 {
-                    NotifyPropertyChanged("DataContext"); 
-                } */ // tutaj jakis event co bedzie zmienial ongoing model w przypadku gdzie sie zmieni i jest aktualny na ekranie.
+                   // w jakis sposob zresetowac ongoingmodel();
+                } 
 
             }
             catch (Exception e)
