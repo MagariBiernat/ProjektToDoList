@@ -94,7 +94,7 @@ namespace ToDoList
             string[] dzisiaj = datax.Split('.');
             string[] kczas = x.Split(' ');
             string[] data = kczas[1].Split(':');
-            MessageBox.Show(current_date_today + "  =  " + datax);
+            
             
             if (Int32.Parse(dzisiaj[2]) >= Int32.Parse(current_date[2]))
             {
@@ -112,7 +112,7 @@ namespace ToDoList
                     else
                     {
 
-                        if (SavedText != "" && datax.Length > 0 && data[1].Length > 0)
+                        if (SavedText != "" && datax.Length >= 0 && data[1].Length > 0)
                         {
                             try
                             {
