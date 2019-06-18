@@ -26,7 +26,6 @@ namespace ToDoList
     /// </summary>
     public partial class MainWindow : Window
     {
-        string DejtaContext = "OnGoingModel";
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
         public MainWindow()
         {
@@ -37,24 +36,21 @@ namespace ToDoList
         private void OnGoingTasks_Bttn_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new OnGoingModel();
-            DejtaContext = "OnGoingModel";
         }
         private void CompletedTasks_Bttn_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new CompletedModel();
-            DejtaContext = "CompletedModel";
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new UdaneModel();
-            DejtaContext = "UdaneModel";
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             DataContext = new NieUdaneModel();
-            DejtaContext = "NieUdaneModel";
         }
         
 
@@ -70,10 +66,7 @@ namespace ToDoList
                 conn.Open();
                 command.Connection = conn;
                 command.ExecuteNonQuery();
-               if (DejtaContext == "OnGoingModel")
-                {
-                   // w jakis sposob zresetowac ongoingmodel();
-                } 
+               
 
             }
             catch (Exception e)
@@ -88,28 +81,64 @@ namespace ToDoList
         }
         private void Create_Task_Click(object sender, RoutedEventArgs e)
         {
+            DateTime dt = DateTime.Now;
+            string current_time_now = dt.ToShortTimeString();
+            string current_date_today = dt.ToShortDateString();
+            string[] current_time = current_time_now.Split(':');
+            string[] current_date = current_date_today.Split('.');
             var SavedDate = Date_Task.SelectedDate.Value.Date;
             var SavedText = Nameof_Task.Text;
+            
             string datax = SavedDate.ToShortDateString();
             string x = Time_Task.SelectedTime.ToString();
-            string[] data = x.Split(' ');
-            if (SavedText != "" && datax.Length > 0 && data[1].Length > 0)
+            string[] dzisiaj = datax.Split('.');
+            string[] kczas = x.Split(' ');
+            string[] data = kczas[1].Split(':');
+            MessageBox.Show(current_date_today + "  =  " + datax);
+            
+            if (Int32.Parse(dzisiaj[2]) >= Int32.Parse(current_date[2]))
             {
-                try
+                if ((Int32.Parse(dzisiaj[1]) >= Int32.Parse(current_date[1])) && (Int32.Parse(dzisiaj[0]) >= Int32.Parse(current_date[0])))
                 {
-                    Create_Task_Query(SavedText, datax, data[1]);
+                    if ((current_date_today == datax) && (Int32.Parse(data[0]) == Int32.Parse(current_time[0])) && (Int32.Parse(data[1]) <= Int32.Parse(current_time[1]) )  )
+                    {
+                        MessageBox.Show("Wprowadziles zla godzine!");
+
+                    }
+                    else if ((current_date_today == datax) && (Int32.Parse(data[0]) < Int32.Parse(current_time[0])))
+                    {
+                        MessageBox.Show("Wprowadziles zla godzine!");
+                    }
+                    else
+                    {
+
+                        if (SavedText != "" && datax.Length > 0 && data[1].Length > 0)
+                        {
+                            try
+                            {
+                                Create_Task_Query(SavedText, datax, kczas[1]);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Wystapil blad! :" + ex);
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nie wprowadziles nazwy zadania !");
+                        }
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Wystapil blad! :" + ex);
+                    MessageBox.Show("Wprowadziles niepoprawna date !");
                 }
-                
             }
             else
             {
-                MessageBox.Show("Wprowadziles niepoprawne dane !");
+                MessageBox.Show("Wprowadziles niepoprawna date! !");
             }
-            
         }
     }
    

@@ -34,8 +34,7 @@ namespace ToDoList.Views
         }
         void Displaydata()
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
-            SqlCommand comm = new SqlCommand("SELECT Id, text, data FROM tasks ORDER BY data ASC", con);
+            SqlCommand comm = new SqlCommand("SELECT Id, text, data FROM tasks ORDER BY data ASC", conn);
             SqlDataAdapter sda = new SqlDataAdapter(comm);
             DataTable dt = new DataTable("Tasks");
             sda.Fill(dt);
@@ -61,6 +60,13 @@ namespace ToDoList.Views
             string a = drv["Id"].ToString();
             DeleteRow(a);
             Displaydata();
+        }
+        void FindCompleted()
+        {
+            DateTime d = DateTime.Now;
+            d.ToShortDateString();
+            DateTime dt = DateTime.Now;
+            dt.ToShortTimeString();
         }
         
         
