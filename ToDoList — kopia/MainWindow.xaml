@@ -1,0 +1,88 @@
+﻿<Window x:Class="ToDoList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:ToDoList.ViewModels"
+        xmlns:views="clr-namespace:ToDoList.Views"
+        xmlns:local="clr-namespace:ToDoList"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="#FFD700"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        Title="ToDo" Foreground="Black" MinHeight="600" MinWidth="450" Height="600" Width="950" MaxHeight="600" MaxWidth="950">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="#009688" BorderThickness="0">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="7" Direction="330" Color="Black" ShadowDepth="4" Opacity="0.3"></DropShadowEffect>
+                            </Border.Effect>
+                            <ContentPresenter x:Name="cp" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.Foreground="White"></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="#E0F2F1"></Setter>
+                                <Setter TargetName="cp" Property="TextBlock.Foreground" Value="Gray"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#00695C"></Setter>
+                                <Setter TargetName="cp" Property="TextBlock.Foreground" Value="White"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#004D40"></Setter>
+                                <Setter TargetName="cp" Property="TextBlock.Foreground" Value="White"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Name="OnGoingTemplate" DataType="{x:Type viewmodels:OnGoingModel}">
+            <views:OnGoing DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="CompletedTemplate" DataType="{x:Type viewmodels:CompletedModel}">
+            <views:Completed DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="UdaneTemplate" DataType="{x:Type viewmodels:UdaneModel}">
+            <views:Udane DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="NieUdaneTemplate" DataType="{x:Type viewmodels:NieUdaneModel}">
+            <views:NieUdane DataContext="{Binding}"/>
+        </DataTemplate>
+        
+        
+    </Window.Resources>
+    
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="215" Margin="10,10,0,0"/>
+        <Grid HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="215" Margin="10,115,0,0"/>
+        <Grid HorizontalAlignment="Left" Height="435" VerticalAlignment="Top" Width="707" Margin="225,10,0,0">
+            <Button x:Name="OnGoingTasks_Bttn" Content="Aktualne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,0,0,0" Height="65" Click="OnGoingTasks_Bttn_Click"/>
+            <Button x:Name="CompletedTasks_Bttn" Content="Ukonczone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="257,0,0,0" Height="65" Click="CompletedTasks_Bttn_Click"/>
+            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="423,0,0,0" Height="65" Click="Button_Click"/>
+            <Grid HorizontalAlignment="Left" Height="343" VerticalAlignment="Top" Width="687" Margin="10,82,0,0">
+                <!--- <ToggleButton Margin="5" HorizontalAlignment="Left"
+                          Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"
+                          IsChecked="False"/> -->
+                <ContentControl Content="{Binding}"/>
+            </Grid>
+            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="566,0,0,0" Height="65" Click="Button_Click_1"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="109" VerticalAlignment="Bottom" Width="922" Margin="10,450,0,0">
+            <DatePicker x:Name="Date_Task" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Top" Margin="450,42,0,0" Width="120" Height="29"/>
+            <materialDesign:TimePicker x:Name="Time_Task" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Godzina" VerticalAlignment="Top" Margin="590,42,0,0" Width="100" Height="29"/>
+            
+            <TextBox x:Name="Nameof_Task" HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Width="300" materialDesign:HintAssist.Hint="Nazwa zadania" Margin="130,42,0,0"/>
+            
+            <Button x:Name="Create_Task" Content="Utwórz zadanie" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="50" Margin="740,21,0,0" Click="Create_Task_Click"/>
+        </Grid>
+    </Grid>
+</Window>    
