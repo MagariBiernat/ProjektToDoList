@@ -40,7 +40,10 @@ namespace ToDoList.Views
             sda.Fill(dt);
             OnGoingTasks.ItemsSource = dt.DefaultView;
         }
-
+        public void DisplayDataHandler()
+        {
+            Displaydata();
+        }
         private void Usun_Click(object sender, RoutedEventArgs e)
         {
             
