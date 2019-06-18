@@ -11,7 +11,7 @@
     <Grid>
         <DataGrid SelectionMode="Single" AutoGenerateColumns="False"  x:Name="OnGoingTasks">
             <DataGrid.Columns>
-                <DataGridTextColumn Visibility="Hidden" IsReadOnly="True" Binding="{Binding Id}" Width="120" MaxWidth="120" Header="Ukonczono?">
+                <DataGridTextColumn Visibility="Hidden" IsReadOnly="True" Binding="{Binding Id}" MaxWidth="120">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -22,7 +22,6 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>

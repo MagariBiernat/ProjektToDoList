@@ -77,12 +77,12 @@
             <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="566,0,0,0" Height="65" Click="Button_Click_1"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="109" VerticalAlignment="Bottom" Width="922" Margin="10,450,0,0">
-            <DatePicker HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Top" Margin="450,42,0,0" Width="120" Height="29"/>
-            <materialDesign:TimePicker HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Godzina" VerticalAlignment="Top" Margin="590,42,0,0" Width="100" Height="29"/>
+            <DatePicker x:Name="Date_Task" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Top" Margin="450,42,0,0" Width="120" Height="29"/>
+            <materialDesign:TimePicker x:Name="Time_Task" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Godzina" VerticalAlignment="Top" Margin="590,42,0,0" Width="100" Height="29"/>
             
-            <TextBox HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Width="300" materialDesign:HintAssist.Hint="Nazwa zadania" Margin="130,42,0,0"/>
+            <TextBox x:Name="Nameof_Task" HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Width="300" materialDesign:HintAssist.Hint="Nazwa zadania" Margin="130,42,0,0"/>
             
-            <Button x:Name="Create_Task" Content="Utwórz zadanie" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="50" Margin="740,21,0,0"/>
+            <Button x:Name="Create_Task" Content="Utwórz zadanie" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="50" Margin="740,21,0,0" Click="Create_Task_Click"/>
         </Grid>
     </Grid>
 </Window>    
