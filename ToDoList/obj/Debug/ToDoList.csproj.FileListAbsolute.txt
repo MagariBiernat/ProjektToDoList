@@ -59,4 +59,11 @@ C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\Pro
 C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\Views\Udane.g.cs
 C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\Views\NieUdane.baml
 C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\Views\Udane.baml
+<<<<<<< HEAD
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\NieUdane.g.cs
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\Udane.g.cs
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\NieUdane.baml
+\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\Views\Udane.baml
+=======
 C:\Users\Magari.DESKTOP-5IG07VO\source\repos\ToDo-List-Projekt-Programowanie\ProjektToDoList\ToDoList\obj\Debug\ToDoList.csprojAssemblyReference.cache
+>>>>>>> 8967fc78a9ad1b2f2cd19a09afd518e327b0b5d4
