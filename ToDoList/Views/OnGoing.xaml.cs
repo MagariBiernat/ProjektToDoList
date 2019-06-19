@@ -22,15 +22,18 @@ namespace ToDoList.Views
     /// </summary>
     public partial class OnGoing : UserControl
     {
-        private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
+        private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True");
         public OnGoing()
         {
+
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            CheckIfCompleted();
             Displaydata();
+
         }
         void Displaydata()
         {
@@ -40,7 +43,6 @@ namespace ToDoList.Views
             sda.Fill(dt);
             OnGoingTasks.ItemsSource = dt.DefaultView;
         }
-
         public void DisplayDataHandler()
         {
             Displaydata();
@@ -62,18 +64,78 @@ namespace ToDoList.Views
             DeleteRow(a);
             Displaydata();
         }
-        void FindCompleted()
+        public void Refresh()
         {
-            DateTime d = DateTime.Now;
-            d.ToShortDateString();
-            DateTime dt = DateTime.Now;
-            dt.ToShortTimeString();
+            Displaydata();
         }
-        
-        
-            
+        private void CheckIfCompleted()
+        {
+            DateTime dt = DateTime.Now;
+            string ct = dt.ToShortTimeString();
+            string cd = dt.ToShortDateString();
+            string[] current_time = ct.Split(':');
+            string[] current_date = cd.Split('.');
+            List<string> IdCompleted = new List<string>(); // '2011-04-12T00:00:00.000' 
+            SqlCommand comm = new SqlCommand("SELECT * FROM Tasks WHERE data <= CURRENT_TIMESTAMP ;", conn);
+            // MessageBox.Show(" hi ");
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = comm.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    string wynik = "";
+                    while (reader.Read())
+                    {
+                        wynik += (reader.GetInt32(0).ToString());
 
-        
+                        IdCompleted.Add((reader.GetInt32(0)).ToString());
+                    }
+                    //     MessageBox.Show(wynik);
+                }
+                reader.Close();
+
+                if (IdCompleted.Count > 0)
+                {
+                    for (int i = 0; i < IdCompleted.Count; i++)
+                    {
+                        SqlCommand komenda = new SqlCommand("DELETE FROM Tasks WHERE Id = " + IdCompleted[i] + " ;", conn);
+                        SqlCommand command = new SqlCommand("INSERT INTO TasksCompleted (text, data, IsCompleted) VALUES((SELECT text FROM Tasks WHERE Id = " + IdCompleted[i] + "), (SELECT data FROM Tasks WHERE Id = " + IdCompleted[i] + "), '' );");
+                        try
+                        {
+                            command.Connection = conn;
+                            command.ExecuteNonQuery();
+                            //           MessageBox.Show(IdCompleted[i]);
+                            komenda.Connection = conn;
+                            komenda.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Wystapil blad !" + ex);
+                        }
+
+
+                    }
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Wystapil blad" + e);
+            }
+            finally
+            {
+                Displaydata();
+                conn.Close();
+            }
+
+        }
+
+
+
+
+
     }
 
 }
