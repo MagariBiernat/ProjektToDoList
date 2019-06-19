@@ -14,7 +14,7 @@
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-     Background="#FFD700"
+     Background="#ffc338"
      FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Title="ToDo" Foreground="Black" MinHeight="600" MinWidth="450" Height="600" Width="950" MaxHeight="600" MaxWidth="950">
@@ -40,7 +40,35 @@
     
     <Grid>
         <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="215" Margin="10,10,0,0"/>
-        <Grid HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="215" Margin="10,115,0,0"/>
+        <Grid HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="215" Margin="10,115,0,0">
+            <Grid>
+                <lvc:Gauge Grid.Row="2"
+                           Width="180"
+                   From="0" To="100" Value="70"
+                   Uses360Mode="True"
+                   HighFontSize="50" Foreground="Black"
+                   FromColor="White" ToColor="White"
+                   GaugeBackground="Transparent"
+                   LabelsVisibility="Collapsed" Grid.ColumnSpan="2" Margin="-35,0,-39,-31" RenderTransformOrigin="0.5,0.5">
+                    <lvc:Gauge.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.284"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </lvc:Gauge.RenderTransform>
+                    <lvc:Gauge.GaugeActiveFill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="Black" Offset="0.0" />
+                            
+                            <GradientStop Color="Orange" Offset="1.7" />
+                        </LinearGradientBrush>
+                    </lvc:Gauge.GaugeActiveFill>
+                </lvc:Gauge>
+
+            </Grid>
+        </Grid>
         <Grid HorizontalAlignment="Left" Height="435" VerticalAlignment="Top" Width="707" Margin="225,10,0,0">
             
             <Button x:Name="OnGoingTasks_Bttn" Margin="10,20,0,0" Content="AKTUALNE"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="{x:Null}"  FontFamily="Segoe UI Black" Height="40" Width="120" FontSize="16" Click="OnGoingTasks_Bttn_Click">
@@ -94,5 +122,5 @@
             
         </Grid>
     </Grid>
-
+    
 </Window>

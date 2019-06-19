@@ -56,9 +56,21 @@
                    From="0" To="100" Value="50"/>
 
         <!--custom fill gauge-->
-        <lvc:Gauge Grid.Row="2" Grid.Column="1"
+        <lvc:Gauge Grid.Row="2"
                    From="0" To="100" Value="50"
-                   LabelsVisibility="Collapsed">
+                   Uses360Mode="True"
+                   FontSize="40" Foreground="White"
+                   FromColor="White" ToColor="White"
+                   GaugeBackground="Transparent"
+                   LabelsVisibility="Collapsed" Grid.ColumnSpan="2" Margin="150,0,-39,-31" RenderTransformOrigin="0.5,0.5">
+            <lvc:Gauge.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.284"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </lvc:Gauge.RenderTransform>
             <lvc:Gauge.GaugeActiveFill>
                 <LinearGradientBrush>
                     <GradientStop Color="Yellow" Offset="0.0" />
