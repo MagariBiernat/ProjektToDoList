@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\obj\Debug\
+C:\Users\Magari\source\repos\ProjektToDoList\ToDoList\obj\Debug\
 ToDoList
 none
 false
 DEBUG;TRACE
-\\Mac\Home\Documents\GitHub\ProjektToDoList\ToDoList\App.xaml
+C:\Users\Magari\source\repos\ProjektToDoList\ToDoList\App.xaml
 61005364365
 2-1995130054
 15-742654435
-17-2074909419
+1712054750
 MainWindow.xaml;Views\Completed.xaml;Views\Guages.xaml;Views\NieUdane.xaml;Views\OnGoing.xaml;Views\Udane.xaml;
 
 False

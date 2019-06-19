@@ -23,14 +23,69 @@ namespace ToDoList.Views
     /// </summary>
     public partial class Completed : UserControl
     {
-        private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
+        private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True");
         public Completed()
         {
             InitializeComponent();
         }
         private void Window_Loaded_Completed(object sender, RoutedEventArgs e)
         {
+            Zliczanie();
             Displaydata();
+        }
+        private void Zliczanie()
+        {
+            List<string> Udane = new List<string>();
+            List<string> NieUdane = new List<string>();
+            SqlCommand komendaU = new SqlCommand("SELECT * FROM TasksCompleted WHERE IsCompleted = 'Udane' ;", conn);
+            SqlCommand komendaN = new SqlCommand("SELECT * FROM TasksCompleted WHERE IsCompleted = 'NieUdane' ;", conn);
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = komendaU.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Udane.Add((reader.GetInt32(0)).ToString());
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Wystapil blad !" + e);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            
+             try
+            {
+                conn.Open();
+                SqlDataReader reader = komendaN.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        NieUdane.Add((reader.GetInt32(0)).ToString());
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Wystapil blad !" + e);
+            }
+            finally
+            {
+                conn.Close();
+            }
+             int aaa = Udane.Count();
+             int bbb = NieUdane.Count();
+            // MessageBox.Show(aaa + " helo " + bbb);
+
         }
         void Displaydata()
         {
@@ -54,21 +109,40 @@ namespace ToDoList.Views
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView drv = (DataRowView)CompletedTasks.SelectedItem;
-            string a = "Udane";
-            string b = drv["Id"].ToString();
-            ChangeRow(a, b);
-            Displaydata();
+            try
+            {
 
+                DataRowView drv = (DataRowView)CompletedTasks.SelectedItem;
+                string a = "Udane";
+                string b = drv["Id"].ToString();
+                ChangeRow(a, b);
+                Displaydata();
+                drv = null;
+                UpdateLayout();
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Wystapil blad " + e1);
+            }
         }
         private void Nieudane_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+            
             DataRowView drv = (DataRowView)CompletedTasks.SelectedItem;
             string a = "NieUdane";
             string b = drv["Id"].ToString();
             ChangeRow(a, b);
             Displaydata();
+            drv = null;
+                UpdateLayout();
         }
+            catch (Exception e2)
+            {
+                MessageBox.Show("Wystapil blad " + e2);
+            }
+}
 
     }
     
