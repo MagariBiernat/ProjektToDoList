@@ -9,7 +9,7 @@
              Loaded="Window_Loaded_NieUdane"
              >
     <Grid>
-        <DataGrid Background="Transparent" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False"  x:Name="CompletedTasks">
+        <DataGrid Background="Transparent" HorizontalGridLinesBrush="Transparent" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False"  x:Name="CompletedTasks">
             <DataGrid.Columns>
                 <DataGridTextColumn Visibility="Hidden" IsReadOnly="True" Binding="{Binding Id}" Width="120" MaxWidth="120" Header="Ukonczono?">
                     <DataGridTextColumn.ElementStyle>
