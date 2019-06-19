@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:viewmodels="clr-namespace:ToDoList.ViewModels"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:views="clr-namespace:ToDoList.Views"
@@ -20,6 +21,7 @@
     
     
     <Window.Resources>
+        
         <DataTemplate  x:Name="OnGoingTemplate" DataType="{x:Type viewmodels:OnGoingModel}">
             <views:OnGoing DataContext="{Binding}"/>
         </DataTemplate>
@@ -32,6 +34,7 @@
         <DataTemplate x:Name="NieUdaneTemplate" DataType="{x:Type viewmodels:NieUdaneModel}">
             <views:NieUdane DataContext="{Binding}"/>
         </DataTemplate>
+        
     </Window.Resources>
     
     
@@ -80,8 +83,8 @@
         <Grid HorizontalAlignment="Left" Height="109" VerticalAlignment="Bottom" Width="922" Margin="10,450,0,0">
             <DatePicker x:Name="Date_Task" SelectedDate="{x:Static sys:DateTime.Now}" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Data" VerticalAlignment="Top" Margin="450,42,0,0" Width="120" Height="29"/>
             <materialDesign:TimePicker x:Name="Time_Task" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Godzina" VerticalAlignment="Top" Margin="590,42,0,0" Width="100" Height="29"/>
-            <TextBox x:Name="Nameof_Task" HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Width="300" materialDesign:HintAssist.Hint="Nazwa zadania" Margin="130,42,0,0"/>
-            <Button x:Name="Create_Task" Margin="740,30,0,0" Content="UTWÓRZ" VerticalAlignment="Top" HorizontalAlignment="Left" Background="{x:Null}"  FontFamily="Segoe UI Black" Height="40" Width="120" FontSize="16" Click="Create_Task_Click">
+            <TextBox x:Name="Nameof_Task" HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300" materialDesign:HintAssist.Hint="Nazwa zadania" Margin="130,42,0,0"/>
+            <Button x:Name="Create_Task" Margin="740,30,0,0" Content="UTWÓRZ" VerticalAlignment="Top" HorizontalAlignment="Left"  Background="{x:Null}"  FontFamily="Segoe UI Black" Height="40" Width="120" FontSize="16" Click="Create_Task_Click">
                 <Button.BorderBrush>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="10,10">
                         <GradientStop Color="Black" Offset="3"/>
@@ -91,6 +94,5 @@
             
         </Grid>
     </Grid>
-</Window>    
-    
-    
+
+</Window>

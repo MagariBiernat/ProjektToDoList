@@ -82,64 +82,139 @@ namespace ToDoList
         private void Create_Task_Click(object sender, RoutedEventArgs e)
         {
             DateTime dt = DateTime.Now;
-            string current_time_now = dt.ToShortTimeString();
-            string current_date_today = dt.ToShortDateString();
-            string[] current_time = current_time_now.Split(':');
-            string[] current_date = current_date_today.Split('.');
+            string ctn = dt.ToShortTimeString();
+            string cdt = dt.ToShortDateString();
             var SavedDate = Date_Task.SelectedDate.Value.Date;
             var SavedText = Nameof_Task.Text;
-            
             string datax = SavedDate.ToShortDateString();
             string x = Time_Task.SelectedTime.ToString();
-            string[] dzisiaj = datax.Split('.');
-            string[] kczas = x.Split(' ');
-            string[] data = kczas[1].Split(':');
-            
-            
-            if (Int32.Parse(dzisiaj[2]) >= Int32.Parse(current_date[2]))
+            if ((datax != null) && (datax != ""))
             {
-                if ((Int32.Parse(dzisiaj[1]) >= Int32.Parse(current_date[1])) && (Int32.Parse(dzisiaj[0]) >= Int32.Parse(current_date[0])))
+                if ((x != null) && (x != ""))
                 {
-                    if ((current_date_today == datax) && (Int32.Parse(data[0]) == Int32.Parse(current_time[0])) && (Int32.Parse(data[1]) <= Int32.Parse(current_time[1]) )  )
+                    if (SavedText != "")
                     {
-                        MessageBox.Show("Wprowadziles zla godzine!");
+                        string[] ct = ctn.Split(':'); // [0] = godz, [1] minuty, [2] sekundy [AKTUALNE]
+                        string[] cd = cdt.Split('.');   // [0] = dzien, [1] miesiac [2] rok [AKTUALNE]
 
-                    }
-                    else if ((current_date_today == datax) && (Int32.Parse(data[0]) < Int32.Parse(current_time[0])))
-                    {
-                        MessageBox.Show("Wprowadziles zla godzine!");
-                    }
-                    else
-                    {
-
-                        if (SavedText != "" && datax.Length >= 0 && data[1].Length > 0)
+                        string[] task_date = datax.Split('.'); // [0] = dzien, [1] miesiac [2] rok TASKA
+                        string[] czas_of_task = x.Split(' ');
+                        string[] task_time = czas_of_task[1].Split(':'); // [0] = godz, [1] minuty, [2] sekundy TASKA //
+                        if (Int32.Parse(task_date[2]) == Int32.Parse(cd[2]))
                         {
+                            if (Int32.Parse(task_date[1]) > Int32.Parse(cd[1]))
+                            {
+
+                                try
+                                {
+                                    Create_Task_Query(SavedText, datax, czas_of_task[1]);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Wystapil blad! :" + ex);
+                                }
+
+
+
+                            }
+                            else if (Int32.Parse(task_date[1]) == Int32.Parse(cd[1]))
+                            {
+                                if (Int32.Parse(task_date[0]) > Int32.Parse(cd[0]))
+                                {
+                                    try
+                                    {
+                                        Create_Task_Query(SavedText, datax, czas_of_task[1]);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("Wystapil blad! :" + ex);
+                                    }
+                                }
+                                else if (Int32.Parse(task_date[0]) == Int32.Parse(cd[0]))
+                                {
+                                    if (Int32.Parse(task_time[0]) > Int32.Parse(ct[0]))
+                                    {
+                                        try
+                                        {
+                                            Create_Task_Query(SavedText, datax, czas_of_task[1]);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            MessageBox.Show("Wystapil blad! :" + ex);
+                                        }
+                                    }
+                                    else if (Int32.Parse(task_time[0]) == Int32.Parse(ct[0]))
+                                    {
+                                        if (Int32.Parse(task_time[1]) > Int32.Parse(ct[1]))
+                                        {
+                                            try
+                                            {
+                                                Create_Task_Query(SavedText, datax, czas_of_task[1]);
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                MessageBox.Show("Wystapil blad! :" + ex);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Podales zla godzine");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Podales zla godzine");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Podales zla date");
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Podales zla date");
+                            }
+                        }
+                        else if (Int32.Parse(task_date[2]) > Int32.Parse(cd[2]))
+                        {
+
                             try
                             {
-                                Create_Task_Query(SavedText, datax, kczas[1]);
+                                Create_Task_Query(SavedText, datax, czas_of_task[1]);
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show("Wystapil blad! :" + ex);
                             }
 
+
                         }
                         else
                         {
-                            MessageBox.Show("Nie wprowadziles nazwy zadania !");
+                            MessageBox.Show("Podales zla date");
                         }
+
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Nie wprowadziles nazwy zadania !");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Wprowadziles niepoprawna date !");
+                    MessageBox.Show("Podaj godzine...");
                 }
             }
             else
             {
-                MessageBox.Show("Wprowadziles niepoprawna date! !");
+                MessageBox.Show("Podaj date...");
             }
+
         }
     }
    
 }
+
