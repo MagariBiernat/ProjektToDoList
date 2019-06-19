@@ -14,13 +14,17 @@
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-     Background="#ffc338"
+        
+     
      FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Title="ToDo" Foreground="Black" MinHeight="600" MinWidth="450" Height="600" Width="950" MaxHeight="600" MaxWidth="950">
-    
-    
+
+
+
+   
     <Window.Resources>
+        
         
         <DataTemplate  x:Name="OnGoingTemplate" DataType="{x:Type viewmodels:OnGoingModel}">
             <views:OnGoing DataContext="{Binding}"/>
@@ -34,21 +38,40 @@
         <DataTemplate x:Name="NieUdaneTemplate" DataType="{x:Type viewmodels:NieUdaneModel}">
             <views:NieUdane DataContext="{Binding}"/>
         </DataTemplate>
-        
+       
     </Window.Resources>
     
     
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="215" Margin="10,10,0,0"/>
+        <Rectangle>
+            <Rectangle.Fill>
+                <LinearGradientBrush>
+                    <GradientStop Color="#ffc266" Offset="0" />
+
+                    <GradientStop Color="#ffa31a" Offset="1.0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+
+        <Grid HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="320" Margin="10,10,0,0">
+            
+            <TextBlock Text="todo" HorizontalAlignment="Left"  TextWrapping="Wrap" Margin="30,17,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="40" RenderTransformOrigin="0.033,-1.414"/>
+            <TextBlock Text="list" HorizontalAlignment="Left" Margin="111,17,0,0" VerticalAlignment="Top"  FontSize="40" RenderTransformOrigin="0.033,-1.414"/>
+            <TextBlock Margin="80,55" Text="Welcome,"/>
+            <TextBlock Margin="140,55" FontWeight="Bold" Text="Pacek"/>
+        </Grid>
         <Grid HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="215" Margin="10,115,0,0">
             <Grid>
+                <TextBlock Text="Wykonanych" HorizontalAlignment="Left" Margin="55,33,0,0" VerticalAlignment="Top"  FontSize="20" RenderTransformOrigin="0.033,-1.414"/>
+                <TextBlock Text="zadań" HorizontalAlignment="Left" Margin="65,53,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.033,-1.414"/>
                 <lvc:Gauge Grid.Row="2"
                            Width="180"
-                   From="0" To="100" Value="70"
+                   From="0" To="100" Value="30"
                    Uses360Mode="True"
                    HighFontSize="50" Foreground="Black"
                    FromColor="White" ToColor="White"
-                   GaugeBackground="Transparent"
+                   GaugeBackground="#ffc266"
                    LabelsVisibility="Collapsed" Grid.ColumnSpan="2" Margin="-35,0,-39,-31" RenderTransformOrigin="0.5,0.5">
                     <lvc:Gauge.RenderTransform>
                         <TransformGroup>
@@ -85,14 +108,14 @@
                     </LinearGradientBrush>
                 </Button.BorderBrush>
             </Button>
-            <Button Margin="400,20,0,0" Content="BUTTON"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="{x:Null}"  FontFamily="Segoe UI Black" Height="40" Width="120" FontSize="16" Click="Button_Click">
+            <Button Margin="400,20,0,0" Content="UDANE"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="{x:Null}"  FontFamily="Segoe UI Black" Height="40" Width="120" FontSize="16" Click="Button_Click">
                 <Button.BorderBrush>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="10,10">
                         <GradientStop Color="Black" Offset="3"/>
                     </LinearGradientBrush>
                 </Button.BorderBrush>
             </Button>
-            <Button Margin="570,20,0,0" Content="BUTTON"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="{x:Null}"  FontFamily="Segoe UI Black" Height="40" Width="120" FontSize="16" Click="Button_Click_1">
+            <Button Margin="570,20,0,0" Content="NIEUDANE"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="{x:Null}"  FontFamily="Segoe UI Black" Height="40" Width="120" FontSize="16" Click="Button_Click_1">
                 <Button.BorderBrush>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="10,10">
                         <GradientStop Color="Black" Offset="3"/>
