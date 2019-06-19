@@ -26,6 +26,7 @@ namespace ToDoList
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string AM = "AM";
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True");
         public MainWindow()
         {
@@ -58,7 +59,7 @@ namespace ToDoList
         {
             SqlCommand command = new SqlCommand();
             
-            command.CommandText = "INSERT INTO Tasks (text, data) VALUES ( '" + name_of_task + "' , convert(datetime,'" + date + " " + time + " AM', 103));";
+            command.CommandText = "INSERT INTO Tasks (text, data) VALUES ( '" + name_of_task + "' , convert(datetime,'" + date + " " + time + " "+AM+"', 103));";
             
 
             try
@@ -100,6 +101,12 @@ namespace ToDoList
                         string[] task_date = datax.Split('.'); // [0] = dzien, [1] miesiac [2] rok TASKA
                         string[] czas_of_task = x.Split(' ');
                         string[] task_time = czas_of_task[1].Split(':'); // [0] = godz, [1] minuty, [2] sekundy TASKA //
+                        if (Int32.Parse(task_time[0]) > 12)
+                            AM = "PM";
+                        if (AM == "PM")
+                        {
+                            task_time[0] = (Int32.Parse(task_time[0]) - 12).ToString();
+                        }
                         if (Int32.Parse(task_date[2]) == Int32.Parse(cd[2]))
                         {
                             if (Int32.Parse(task_date[1]) > Int32.Parse(cd[1]))
