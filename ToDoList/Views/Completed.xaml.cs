@@ -23,6 +23,8 @@ namespace ToDoList.Views
     /// </summary>
     public partial class Completed : UserControl
     {
+        static public int CompletedValuee = 0;
+        static public int NotCompletedValuee = 0;
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True");
         public Completed()
         {
@@ -82,8 +84,8 @@ namespace ToDoList.Views
             {
                 conn.Close();
             }
-            int aaa = Udane.Count();
-            int bbb = NieUdane.Count();
+            CompletedValuee = Udane.Count();
+            NotCompletedValuee = NieUdane.Count();
             // MessageBox.Show(aaa + " helo " + bbb);
 
         }

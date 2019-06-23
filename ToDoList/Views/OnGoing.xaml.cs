@@ -14,12 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using ToDoList.ViewModels;
 
 namespace ToDoList.Views
 {
-    /// <summary>
-    /// Interaction logic for OnGoing.xaml
-    /// </summary>
+    
     public partial class OnGoing : UserControl
     {
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True");
@@ -35,7 +34,7 @@ namespace ToDoList.Views
             Displaydata();
 
         }
-        void Displaydata()
+        public void Displaydata()
         {
             SqlCommand comm = new SqlCommand("SELECT Id, text, data FROM tasks ORDER BY data ASC", conn);
             SqlDataAdapter sda = new SqlDataAdapter(comm);
@@ -46,6 +45,11 @@ namespace ToDoList.Views
         public void DisplayDataHandler()
         {
             Displaydata();
+        }
+        static public void Refresh()
+        {
+            OnGoing Ongoing = new OnGoing();
+            Ongoing.Displaydata();
         }
         void DeleteRow(string a)
         {
@@ -64,10 +68,7 @@ namespace ToDoList.Views
             DeleteRow(a);
             Displaydata();
         }
-        public void Refresh()
-        {
-            Displaydata();
-        }
+        
         private void CheckIfCompleted()
         {
             DateTime dt = DateTime.Now;

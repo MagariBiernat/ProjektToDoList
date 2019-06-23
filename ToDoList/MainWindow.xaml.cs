@@ -17,6 +17,7 @@ using System.Data.SqlClient;
 using ToDoList.ViewModels;
 using ToDoList.Views;
 using System.ComponentModel;
+using System.Threading;
 
 
 namespace ToDoList
@@ -26,12 +27,21 @@ namespace ToDoList
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string AM = "AM";
+        static string AM = "AM";
+        static int compl = 0;
+        static int ncompl = 0;
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True");
+         /*Gauge gauge = new Gauge
+        {
+            CompletedValue = Completed.CompletedValuee;
+        }; */
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new OnGoingModel();
+            this.DataContext = new OnGoingModel();
+
+
+
         }
 
         private void OnGoingTasks_Bttn_Click(object sender, RoutedEventArgs e)
@@ -53,32 +63,32 @@ namespace ToDoList
         {
             DataContext = new NieUdaneModel();
         }
-        
+
 
         private void Create_Task_Query(string name_of_task, string date, string time)
         {
             SqlCommand command = new SqlCommand();
-            
-            command.CommandText = "INSERT INTO Tasks (text, data) VALUES ( '" + name_of_task + "' , convert(datetime,'" + date + " " + time + " "+AM+"', 103));";
-            
+
+            command.CommandText = "INSERT INTO Tasks (text, data) VALUES ( '" + name_of_task + "' , convert(datetime,'" + date + " " + time + " " + AM + "', 103));";
+
 
             try
             {
                 conn.Open();
                 command.Connection = conn;
                 command.ExecuteNonQuery();
-               
+
 
             }
             catch (Exception e)
             {
-                MessageBox.Show("Wystapil blad! :" +e);
+                MessageBox.Show("Wystapil blad! :" + e);
             }
             finally
             {
                 conn.Close();
             }
-            
+
         }
         private void Create_Task_Click(object sender, RoutedEventArgs e)
         {
@@ -89,6 +99,7 @@ namespace ToDoList
             var SavedText = Nameof_Task.Text;
             string datax = SavedDate.ToShortDateString();
             string x = Time_Task.SelectedTime.ToString();
+
             if ((datax != null) && (datax != ""))
             {
                 if ((x != null) && (x != ""))
@@ -96,132 +107,69 @@ namespace ToDoList
                     if (SavedText != "")
                     {
                         string[] ct = ctn.Split(':'); // [0] = godz, [1] minuty, [2] sekundy [AKTUALNE]
-                        string[] cd = cdt.Split('.');   // [0] = dzien, [1] miesiac [2] rok [AKTUALNE]
+                        string[] cd = cdt.Split('.', '/');   // [0] = dzien, [1] miesiac [2] rok [AKTUALNE]
 
-                        string[] task_date = datax.Split('.'); // [0] = dzien, [1] miesiac [2] rok TASKA
+                        string[] task_date = datax.Split('.', '/'); // [0] = dzien, [1] miesiac [2] rok TASKA
                         string[] czas_of_task = x.Split(' ');
                         string[] task_time = czas_of_task[1].Split(':'); // [0] = godz, [1] minuty, [2] sekundy TASKA //
+
+                        DateTime task = new DateTime(Int32.Parse(task_date[2]), Int32.Parse(task_date[1]), Int32.Parse(task_date[0]), Int32.Parse(task_time[0]), Int32.Parse(task_time[1]), 00);
+                        int value = DateTime.Compare(dt, task);
                         if (Int32.Parse(task_time[0]) > 12)
                             AM = "PM";
                         if (AM == "PM")
                         {
                             task_time[0] = (Int32.Parse(task_time[0]) - 12).ToString();
                         }
-                        if (Int32.Parse(task_date[2]) == Int32.Parse(cd[2]))
+
+
+                        if (value < 0)
                         {
-                            if (Int32.Parse(task_date[1]) > Int32.Parse(cd[1]))
-                            {
-
-                                try
-                                {
-                                    Create_Task_Query(SavedText, datax, czas_of_task[1]);
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show("Wystapil blad! :" + ex);
-                                }
-
-
-
-                            }
-                            else if (Int32.Parse(task_date[1]) == Int32.Parse(cd[1]))
-                            {
-                                if (Int32.Parse(task_date[0]) > Int32.Parse(cd[0]))
-                                {
-                                    try
-                                    {
-                                        Create_Task_Query(SavedText, datax, czas_of_task[1]);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("Wystapil blad! :" + ex);
-                                    }
-                                }
-                                else if (Int32.Parse(task_date[0]) == Int32.Parse(cd[0]))
-                                {
-                                    if (Int32.Parse(task_time[0]) > Int32.Parse(ct[0]))
-                                    {
-                                        try
-                                        {
-                                            Create_Task_Query(SavedText, datax, czas_of_task[1]);
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            MessageBox.Show("Wystapil blad! :" + ex);
-                                        }
-                                    }
-                                    else if (Int32.Parse(task_time[0]) == Int32.Parse(ct[0]))
-                                    {
-                                        if (Int32.Parse(task_time[1]) > Int32.Parse(ct[1]))
-                                        {
-                                            try
-                                            {
-                                                Create_Task_Query(SavedText, datax, czas_of_task[1]);
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                MessageBox.Show("Wystapil blad! :" + ex);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Podales zla godzine");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Podales zla godzine");
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Podales zla date");
-                                }
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("Podales zla date");
-                            }
-                        }
-                        else if (Int32.Parse(task_date[2]) > Int32.Parse(cd[2]))
-                        {
-
                             try
                             {
                                 Create_Task_Query(SavedText, datax, czas_of_task[1]);
+                                this.DataContext = new OnGoingModel();
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show("Wystapil blad! :" + ex);
                             }
-
-
                         }
                         else
                         {
-                            MessageBox.Show("Podales zla date");
+                            MessageBox.Show("Podales stara date !");
                         }
-
                     }
-
                     else
                     {
-                        MessageBox.Show("Nie wprowadziles nazwy zadania !");
+                        MessageBox.Show("Wpisz nazwe zadania");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Podaj godzine...");
+                    MessageBox.Show("Nie podales godziny !");
                 }
             }
             else
             {
-                MessageBox.Show("Podaj date...");
+                MessageBox.Show("Nie podales daty !");
             }
-
         }
     }
-   
+    public class Gauge
+    {
+        public int CompletedValue
+        {
+            get
+            {
+                return CompletedValue;
+            }
+            set
+            {
+                CompletedValue = value;
+            }
+        }
+    }
+    
 }
 

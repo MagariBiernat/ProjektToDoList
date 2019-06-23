@@ -25,7 +25,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding data}" Width="170" MaxWidth="170" Header="Data i godzina">
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding data}" Width="340" MaxWidth="340" Header="Data i godzina">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
