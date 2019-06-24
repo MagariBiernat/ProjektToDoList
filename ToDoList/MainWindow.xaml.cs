@@ -28,39 +28,111 @@ namespace ToDoList
     public partial class MainWindow : Window
     {
         static string AM = "AM";
-        static int compl = 0;
-        static int ncompl = 0;
+        public int temp = 0;
+        public float suma = 0;
+        public float wynik = 0;
+        public decimal CompletedValue = 0;
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True");
-         /*Gauge gauge = new Gauge
-        {
-            CompletedValue = Completed.CompletedValuee;
-        }; */
+       
         public MainWindow()
         {
+            Zliczanie();
             InitializeComponent();
             this.DataContext = new OnGoingModel();
+            GaugeValue.Value = Convert.ToDouble(CompletedValue);
+
+
 
 
 
         }
+        private void Zliczanie()
+        {
+            List<string> Udane = new List<string>();
+            List<string> NieUdane = new List<string>();
+            SqlCommand komendaU = new SqlCommand("SELECT * FROM TasksCompleted WHERE IsCompleted = 'Udane' ;", conn);
+            SqlCommand komendaN = new SqlCommand("SELECT * FROM TasksCompleted WHERE IsCompleted = 'NieUdane' ;", conn);
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = komendaU.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Udane.Add((reader.GetInt32(0)).ToString());
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Wystapil blad !" + e);
+            }
+            finally
+            {
+                conn.Close();
+            }
 
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = komendaN.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        NieUdane.Add((reader.GetInt32(0)).ToString());
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Wystapil blad !" + e);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            //  gauge.CompletedValue = Udane.Count();
+              temp = Udane.Count();
+              suma = temp + NieUdane.Count();
+              wynik = (temp / suma) * 100;
+            // CompletedValue = temp.ToString();
+            if (temp != 0)
+            {
+                CompletedValue = Convert.ToDecimal(Math.Round(wynik, 0 ));
+            }
+
+        }
+        public double Get_CompletedValue()
+        {
+            // suma = temp + NieUdane.Count();
+            wynik = (temp / suma) * 100;
+            CompletedValue = Convert.ToDecimal(Math.Round(wynik, 0));
+            return Convert.ToDouble(CompletedValue);
+        }
         private void OnGoingTasks_Bttn_Click(object sender, RoutedEventArgs e)
         {
+            
             DataContext = new OnGoingModel();
         }
         private void CompletedTasks_Bttn_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new CompletedModel();
-
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
             DataContext = new UdaneModel();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            
             DataContext = new NieUdaneModel();
         }
 
@@ -79,6 +151,7 @@ namespace ToDoList
                 command.ExecuteNonQuery();
 
 
+
             }
             catch (Exception e)
             {
@@ -86,6 +159,7 @@ namespace ToDoList
             }
             finally
             {
+                
                 conn.Close();
             }
 
@@ -107,9 +181,9 @@ namespace ToDoList
                     if (SavedText != "")
                     {
                         string[] ct = ctn.Split(':'); // [0] = godz, [1] minuty, [2] sekundy [AKTUALNE]
-                        string[] cd = cdt.Split('.', '/');   // [0] = dzien, [1] miesiac [2] rok [AKTUALNE]
+                        string[] cd = cdt.Split('.', '/', '-');   // [0] = dzien, [1] miesiac [2] rok [AKTUALNE]
 
-                        string[] task_date = datax.Split('.', '/'); // [0] = dzien, [1] miesiac [2] rok TASKA
+                        string[] task_date = datax.Split('.', '/','-'); // [0] = dzien, [1] miesiac [2] rok TASKA
                         string[] czas_of_task = x.Split(' ');
                         string[] task_time = czas_of_task[1].Split(':'); // [0] = godz, [1] minuty, [2] sekundy TASKA //
 
@@ -156,20 +230,8 @@ namespace ToDoList
             }
         }
     }
-    public class Gauge
-    {
-        public int CompletedValue
-        {
-            get
-            {
-                return CompletedValue;
-            }
-            set
-            {
-                CompletedValue = value;
-            }
-        }
-    }
+
+    
     
 }
 

@@ -32,8 +32,28 @@ namespace ToDoList.Views
         }
         private void Window_Loaded_Completed(object sender, RoutedEventArgs e)
         {
-            Zliczanie();
+           // Zliczanie();
             Displaydata();
+        }
+        
+        void Displaydata()
+        {
+
+            SqlCommand comm = new SqlCommand("SELECT Id, text, data FROM taskscompleted WHERE IsCompleted = '' ORDER BY data ASC", conn);
+            SqlDataAdapter sda = new SqlDataAdapter(comm);
+            DataTable dt = new DataTable("TasksCompleted");
+            sda.Fill(dt);
+            CompletedTasks.ItemsSource = dt.DefaultView;
+        }
+        void ChangeRow(string a, string b)
+        {
+            SqlCommand command = new SqlCommand();
+            conn.Open();
+            command.CommandText = "UPDATE TasksCompleted SET IsCompleted = '" + a + "' WHERE Id = '" + b + "' ;";
+            command.Connection = conn;
+            command.ExecuteNonQuery();
+            conn.Close();
+            
         }
         private void Zliczanie()
         {
@@ -84,31 +104,16 @@ namespace ToDoList.Views
             {
                 conn.Close();
             }
-            CompletedValuee = Udane.Count();
-            NotCompletedValuee = NieUdane.Count();
-            // MessageBox.Show(aaa + " helo " + bbb);
+            //  gauge.CompletedValue = Udane.Count();
+            int temp = Udane.Count();
+            // CompletedValue = temp.ToString();
+            if (temp != null && temp != 0)
+            {
+                ((MainWindow)App.Current.MainWindow).GaugeValue.Value = temp;
+            }
 
         }
-        void Displaydata()
-        {
-
-            SqlCommand comm = new SqlCommand("SELECT Id, text, data FROM taskscompleted WHERE IsCompleted = '' ORDER BY data ASC", conn);
-            SqlDataAdapter sda = new SqlDataAdapter(comm);
-            DataTable dt = new DataTable("TasksCompleted");
-            sda.Fill(dt);
-            CompletedTasks.ItemsSource = dt.DefaultView;
-        }
-        void ChangeRow(string a, string b)
-        {
-            SqlCommand command = new SqlCommand();
-            conn.Open();
-            command.CommandText = "UPDATE TasksCompleted SET IsCompleted = '" + a + "' WHERE Id = '" + b + "' ;";
-            command.Connection = conn;
-            command.ExecuteNonQuery();
-            conn.Close();
-
-
-        }
+        
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -118,8 +123,12 @@ namespace ToDoList.Views
                 string a = "Udane";
                 string b = drv["Id"].ToString();
                 ChangeRow(a, b);
+                 ((MainWindow)App.Current.MainWindow).temp++;
+                ((MainWindow)App.Current.MainWindow).suma++;
+                ((MainWindow)App.Current.MainWindow).GaugeValue.Value = ((MainWindow)App.Current.MainWindow).Get_CompletedValue();
                 Displaydata();
                 drv = null;
+                 //((MainWindow)App.Current.MainWindow).Zliczanie();
                 UpdateLayout();
             }
             catch (Exception e1)
@@ -136,6 +145,8 @@ namespace ToDoList.Views
                 string a = "NieUdane";
                 string b = drv["Id"].ToString();
                 ChangeRow(a, b);
+                ((MainWindow)App.Current.MainWindow).suma++;
+                ((MainWindow)App.Current.MainWindow).GaugeValue.Value = ((MainWindow)App.Current.MainWindow).Get_CompletedValue();
                 Displaydata();
                 drv = null;
                 UpdateLayout();

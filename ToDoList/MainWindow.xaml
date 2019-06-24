@@ -65,9 +65,9 @@
             <Grid>
                 <TextBlock Text="Wykonanych" HorizontalAlignment="Left" Margin="55,33,0,0" VerticalAlignment="Top"  FontSize="20" RenderTransformOrigin="0.033,-1.414"/>
                 <TextBlock Text="zadań" HorizontalAlignment="Left" Margin="65,53,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.033,-1.414"/>
-                <lvc:Gauge Grid.Row="2"
+                <lvc:Gauge Name="GaugeValue" Grid.Row="2"
                            Width="180"
-                   From="0" To="100" Value="{Binding CompletedValue}"
+                   From="0" To="100" Value="0"
                    Uses360Mode="True"
                    HighFontSize="50" Foreground="Black"
                    FromColor="White" ToColor="White"

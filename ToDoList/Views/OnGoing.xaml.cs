@@ -41,6 +41,12 @@ namespace ToDoList.Views
             DataTable dt = new DataTable("Tasks");
             sda.Fill(dt);
             OnGoingTasks.ItemsSource = dt.DefaultView;
+            if (OnGoingTasks.Items.Count == 0)
+            {
+                OnGoingTasks.Visibility = Visibility.Hidden;
+                Zdjencie.Source = Properties.Resources.no_tasks;
+                Zdjencie.Visibility = Visibility.Visible;
+            }
         }
         public void DisplayDataHandler()
         {

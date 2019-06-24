@@ -9,7 +9,7 @@
              Loaded="Window_Loaded"
              >
     <Grid>
-        <DataGrid IsReadOnly="True" Background="Transparent" HorizontalGridLinesBrush="Transparent" SelectionMode="Single" AutoGenerateColumns="False"  x:Name="OnGoingTasks">
+        <DataGrid Visibility="Visible" IsReadOnly="True" Background="Transparent" HorizontalGridLinesBrush="Transparent" SelectionMode="Single" AutoGenerateColumns="False"  x:Name="OnGoingTasks">
             <DataGrid.Columns>
                 
                 <DataGridTextColumn Binding="{Binding text}" Width="300" Header="Nazwa zadania">
@@ -33,5 +33,6 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
+        <Image x:Name="Zdjencie"  Width="600" Height="450" Visibility="Hidden" />
     </Grid>
 </UserControl>
