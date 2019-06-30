@@ -12,7 +12,7 @@
         <DataGrid Visibility="Visible" IsReadOnly="True" Background="Transparent" HorizontalGridLinesBrush="Transparent" SelectionMode="Single" AutoGenerateColumns="False"  x:Name="OnGoingTasks">
             <DataGrid.Columns>
                 
-                <DataGridTextColumn Binding="{Binding text}" Width="245" Header="Nazwa zadania">
+                <DataGridTextColumn Binding="{Binding text}" Width="265" Header="Nazwa zadania">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />

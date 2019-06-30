@@ -46,6 +46,12 @@ namespace ToDoList.Views
                 EmptyTasks.Visibility = Visibility.Hidden;
                 //Zdjencie.Source = Properties.Resources.no_tasks;
                 Zdjencie.Visibility = Visibility.Visible;
+                //Zdjencie.Source = string.Format("{0}/{1}/{2}", AppDomain.CurrentDomain.BaseDirectory, "Resources", "no_tasks.png");
+                Zdjencie.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/no_tasks.png"));
+                if (Zdjencie.Visibility == Visibility.Visible)
+                {
+                    //   MessageBox.Show("hello");
+                }
             }
             else
             {

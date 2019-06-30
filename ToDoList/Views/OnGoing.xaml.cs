@@ -50,7 +50,7 @@ namespace ToDoList.Views
                 Zdjencie.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/no_tasks.png"));
                 if (Zdjencie.Visibility == Visibility.Visible)
                 {
-                    MessageBox.Show("hello");
+                 //   MessageBox.Show("hello");
                 }
             }
             else
