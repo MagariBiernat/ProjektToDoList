@@ -27,6 +27,7 @@ namespace ToDoList
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool a = true;
         static string AM = "AM";
         public int temp = 0;
         public float suma = 0;
@@ -39,6 +40,7 @@ namespace ToDoList
             Zliczanie();
             InitializeComponent();
             this.DataContext = new OnGoingModel();
+            a = true;
             GaugeValue.Value = Convert.ToDouble(CompletedValue);
 
 
@@ -115,7 +117,7 @@ namespace ToDoList
         }
         private void OnGoingTasks_Bttn_Click(object sender, RoutedEventArgs e)
         {
-            
+            a = true;
             DataContext = new OnGoingModel();
         }
         private void CompletedTasks_Bttn_Click(object sender, RoutedEventArgs e)
@@ -164,8 +166,13 @@ namespace ToDoList
             }
 
         }
+        
+    
         private void Create_Task_Click(object sender, RoutedEventArgs e)
         {
+         //   Check(); 
+         
+            
             DateTime dt = DateTime.Now;
             string ctn = dt.ToShortTimeString();
             string cdt = dt.ToShortDateString();
@@ -227,6 +234,16 @@ namespace ToDoList
             else
             {
                 MessageBox.Show("Nie podales daty !");
+            }
+            if (a == true)
+            {
+                this.DataContext = new EmptyModel();
+                a = false;
+            }
+            else
+            {
+                this.DataContext = new OnGoingModel();
+                a = true;
             }
         }
     }

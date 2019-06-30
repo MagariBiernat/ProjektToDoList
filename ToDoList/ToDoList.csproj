@@ -84,12 +84,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\CompletedModel.cs" />
+    <Compile Include="ViewModels\EmptyModel.cs" />
     <Compile Include="ViewModels\Guages.cs" />
     <Compile Include="ViewModels\NieUdaneModel.cs" />
     <Compile Include="ViewModels\OnGoingModel.cs" />
     <Compile Include="ViewModels\UdaneModel.cs" />
     <Compile Include="Views\Completed.xaml.cs">
       <DependentUpon>Completed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Empty.xaml.cs">
+      <DependentUpon>Empty.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Guages.xaml.cs">
       <DependentUpon>Guages.xaml</DependentUpon>
@@ -116,6 +120,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Completed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Empty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,7 +180,7 @@
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
     <None Include="no_tasks.png" />
-    <None Include="Resources\no_tasks.png" />
+    <Resource Include="Resources\no_tasks.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pictures\" />

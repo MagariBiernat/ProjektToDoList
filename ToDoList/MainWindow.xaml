@@ -38,7 +38,11 @@
         <DataTemplate x:Name="NieUdaneTemplate" DataType="{x:Type viewmodels:NieUdaneModel}">
             <views:NieUdane DataContext="{Binding}"/>
         </DataTemplate>
-       
+
+        <DataTemplate x:Name="EmptyTemplate" DataType="{x:Type viewmodels:EmptyModel}">
+            <views:Empty DataContext="{Binding}"/>
+        </DataTemplate>
+
     </Window.Resources>
     
     

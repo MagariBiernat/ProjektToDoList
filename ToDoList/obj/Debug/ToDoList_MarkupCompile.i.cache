@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Magari\source\repos\ToDoList\ProjektToDoList\ToDoList\App.xaml
-61005364365
+7-1666357619
 2-1995130054
-16-446854911
+181304556043
 18-411421654
-MainWindow.xaml;Views\Completed.xaml;Views\Guages.xaml;Views\NieUdane.xaml;Views\OnGoing.xaml;Views\Udane.xaml;
+MainWindow.xaml;Views\Completed.xaml;Views\Empty.xaml;Views\Guages.xaml;Views\NieUdane.xaml;Views\OnGoing.xaml;Views\Udane.xaml;
 
-False
+True
 

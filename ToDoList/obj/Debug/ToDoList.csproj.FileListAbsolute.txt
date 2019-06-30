@@ -113,3 +113,5 @@ C:\Users\Magari\source\repos\ToDoList\ProjektToDoList\ToDoList\obj\Debug\ToDoLis
 C:\Users\Magari\source\repos\ToDoList\ProjektToDoList\ToDoList\obj\Debug\ToDoList.csproj.CopyComplete
 C:\Users\Magari\source\repos\ToDoList\ProjektToDoList\ToDoList\obj\Debug\ToDoList.exe
 C:\Users\Magari\source\repos\ToDoList\ProjektToDoList\ToDoList\obj\Debug\ToDoList.pdb
+C:\Users\Magari\source\repos\ToDoList\ProjektToDoList\ToDoList\obj\Debug\Views\Empty.g.cs
+C:\Users\Magari\source\repos\ToDoList\ProjektToDoList\ToDoList\obj\Debug\Views\Empty.baml

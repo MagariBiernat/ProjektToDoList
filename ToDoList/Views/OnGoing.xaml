@@ -12,14 +12,14 @@
         <DataGrid Visibility="Visible" IsReadOnly="True" Background="Transparent" HorizontalGridLinesBrush="Transparent" SelectionMode="Single" AutoGenerateColumns="False"  x:Name="OnGoingTasks">
             <DataGrid.Columns>
                 
-                <DataGridTextColumn Binding="{Binding text}" Width="300" Header="Nazwa zadania">
+                <DataGridTextColumn Binding="{Binding text}" Width="245" Header="Nazwa zadania">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding data}" Width="200" Header="Data i godzina">
+                <DataGridTextColumn Binding="{Binding data}" Width="340" Header="Data i godzina">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -33,6 +33,6 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-        <Image x:Name="Zdjencie"  Width="600" Height="450" Visibility="Hidden" />
+        <Image x:Name="Zdjencie" Source="{Binding ImagePath}"  Width="600" Height="450" Visibility="Hidden" />
     </Grid>
 </UserControl>
