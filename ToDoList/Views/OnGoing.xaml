@@ -19,7 +19,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding data}" Width="340" Header="Data i godzina">
+                <DataGridTextColumn Binding="{Binding data}" Width="422" Header="Data i godzina">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -33,6 +33,11 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-        <Image x:Name="Zdjencie" Source="{Binding ImagePath}"  Width="600" Height="450" Visibility="Hidden" />
+        <StackPanel x:Name="Panel_Empty" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="600">
+            <TextBlock TextWrapping="Wrap" Margin="30,17,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="40" RenderTransformOrigin="0.033,-1.414" Text="Nie posiadasz zadania"/>
+            <TextBlock TextWrapping="Wrap" Margin="30,17,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="33" RenderTransformOrigin="0.033,-1.414" Text="Dodaj zadanie panelem nizej :)"/>
+            <TextBlock TextWrapping="Wrap" Margin="30,17,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="25" RenderTransformOrigin="0.033,-1.414" Text="Powodzenia!"/>
+        </StackPanel>
+        
     </Grid>
 </UserControl>

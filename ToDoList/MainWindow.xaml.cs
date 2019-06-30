@@ -123,18 +123,15 @@ namespace ToDoList
         private void CompletedTasks_Bttn_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new CompletedModel();
-            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
             DataContext = new UdaneModel();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
             DataContext = new NieUdaneModel();
         }
 
@@ -151,9 +148,6 @@ namespace ToDoList
                 conn.Open();
                 command.Connection = conn;
                 command.ExecuteNonQuery();
-
-
-
             }
             catch (Exception e)
             {
@@ -167,7 +161,11 @@ namespace ToDoList
 
         }
         
-    
+        static public int CompareDates(DateTime actual, DateTime Task)
+        {
+            int value = DateTime.Compare(actual, Task);
+            return value;
+        }
         private void Create_Task_Click(object sender, RoutedEventArgs e)
         {
          //   Check(); 
@@ -195,7 +193,7 @@ namespace ToDoList
                         string[] task_time = czas_of_task[1].Split(':'); // [0] = godz, [1] minuty, [2] sekundy TASKA //
 
                         DateTime task = new DateTime(Int32.Parse(task_date[2]), Int32.Parse(task_date[1]), Int32.Parse(task_date[0]), Int32.Parse(task_time[0]), Int32.Parse(task_time[1]), 00);
-                        int value = DateTime.Compare(dt, task);
+                        int value = CompareDates(dt, task);
                         if (Int32.Parse(task_time[0]) > 12)
                             AM = "PM";
                         if (AM == "PM")

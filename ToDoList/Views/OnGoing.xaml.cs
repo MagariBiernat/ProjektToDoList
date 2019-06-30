@@ -44,20 +44,12 @@ namespace ToDoList.Views
             if (OnGoingTasks.Items.Count == 0)
             {
                 OnGoingTasks.Visibility = Visibility.Hidden;
-                //Zdjencie.Source = Properties.Resources.no_tasks;
-                Zdjencie.Visibility = Visibility.Visible;
-                //Zdjencie.Source = string.Format("{0}/{1}/{2}", AppDomain.CurrentDomain.BaseDirectory, "Resources", "no_tasks.png");
-                Zdjencie.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/no_tasks.png"));
-                if (Zdjencie.Visibility == Visibility.Visible)
-                {
-                 //   MessageBox.Show("hello");
-                }
+                Panel_Empty.Visibility = Visibility.Visible;
             }
             else
             {
-                Zdjencie.Visibility = Visibility.Hidden;
-                OnGoingTasks.Visibility = Visibility.Visible;
-                
+                Panel_Empty.Visibility = Visibility.Hidden;
+                OnGoingTasks.Visibility = Visibility.Visible;  
             }
         }
         public void DisplayDataHandler()
