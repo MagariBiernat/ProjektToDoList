@@ -18,10 +18,13 @@ using System.Data.SqlClient;
 namespace ToDoList.Views
 {
     /// <summary>
-    /// Interaction logic for NieUdane.xaml
+    /// code-behind dla eUdane.xaml
     /// </summary>
     public partial class NieUdane : UserControl
     {
+        /// <summary>
+        /// polaczenie
+        /// </summary>
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
         public NieUdane()
         {
@@ -31,6 +34,9 @@ namespace ToDoList.Views
         {
             Displaydata();
         }
+        /// <summary>
+        /// wyswietlenie danych z bazy danych dla rekordow z taskscompleted ktore maja w kolumnie "iscompleted" slowo nieudane.
+        /// </summary>
         void Displaydata()
         {
 

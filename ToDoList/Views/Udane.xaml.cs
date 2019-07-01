@@ -18,10 +18,13 @@ using System.Data.SqlClient;
 namespace ToDoList.Views
 {
     /// <summary>
-    /// Interaction logic for Udane.xaml
+    /// code-behind dla Udane.xaml
     /// </summary>
     public partial class Udane : UserControl
     {
+        /// <summary>
+        /// polaczenie
+        /// </summary>
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
         public Udane()
         {
@@ -31,6 +34,9 @@ namespace ToDoList.Views
         {
             Displaydata();
         }
+        /// <summary>
+        /// wyswietlenie danych z bazy danych dla rekordo z taskscompleted ktore maja w kolumnie "iscompleted" slowo udane.
+        /// </summary>
         void Displaydata()
         {
 

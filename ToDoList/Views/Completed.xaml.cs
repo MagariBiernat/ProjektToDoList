@@ -19,7 +19,7 @@ using System.Data.SqlClient;
 namespace ToDoList.Views
 {
     /// <summary>
-    /// Interaction logic for Completed.xaml
+    /// Code-behind dla Completed.xaml
     /// </summary>
     public partial class Completed : UserControl
     {
@@ -30,12 +30,17 @@ namespace ToDoList.Views
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// Metoda wywoluajca sie w momencie zaladowania okna Completed.xaml
+        /// </summary>
         private void Window_Loaded_Completed(object sender, RoutedEventArgs e)
         {
-           // Zliczanie();
+         
             Displaydata();
         }
-        
+        /// <summary>
+        /// wyswietlenie danych z bazy danych do datagrida ktore nie zostaly zastwierdzone jako pomyslnie lub nie, zakonczone.
+        /// </summary>
         void Displaydata()
         {
 
@@ -45,6 +50,9 @@ namespace ToDoList.Views
             sda.Fill(dt);
             CompletedTasks.ItemsSource = dt.DefaultView;
         }
+        /// <summary>
+        /// Funkcja
+        /// </summary>
         void ChangeRow(string a, string b)
         {
             SqlCommand command = new SqlCommand();
@@ -55,65 +63,11 @@ namespace ToDoList.Views
             conn.Close();
             
         }
-        private void Zliczanie()
-        {
-            List<string> Udane = new List<string>();
-            List<string> NieUdane = new List<string>();
-            SqlCommand komendaU = new SqlCommand("SELECT * FROM TasksCompleted WHERE IsCompleted = 'Udane' ;", conn);
-            SqlCommand komendaN = new SqlCommand("SELECT * FROM TasksCompleted WHERE IsCompleted = 'NieUdane' ;", conn);
-            try
-            {
-                conn.Open();
-                SqlDataReader reader = komendaU.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Udane.Add((reader.GetInt32(0)).ToString());
-                    }
-                }
-                reader.Close();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Wystapil blad !" + e);
-            }
-            finally
-            {
-                conn.Close();
-            }
 
-            try
-            {
-                conn.Open();
-                SqlDataReader reader = komendaN.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        NieUdane.Add((reader.GetInt32(0)).ToString());
-                    }
-                }
-                reader.Close();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Wystapil blad !" + e);
-            }
-            finally
-            {
-                conn.Close();
-            }
-            //  gauge.CompletedValue = Udane.Count();
-            int temp = Udane.Count();
-            // CompletedValue = temp.ToString();
-            if (temp != null && temp != 0)
-            {
-                ((MainWindow)App.Current.MainWindow).GaugeValue.Value = temp;
-            }
 
-        }
-        
+        /// <summary>
+        /// Context menu dla udanego zadania, jednoczesnie zwiekszajacego wartosc dla zmiennych w mainwindow.cs odnosnie wykresu z lewej strony % 
+        /// </summary> 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -136,6 +90,9 @@ namespace ToDoList.Views
                 MessageBox.Show("Wystapil blad " + e1);
             }
         }
+        /// <summary>
+        /// Context menu dla nieudanego zadania, jednoczesnie zwiekszajacego wartosc dla zmiennych w mainwindow.cs odnosnie wykresu z lewej strony % 
+        /// </summary> 
         private void Nieudane_Click(object sender, RoutedEventArgs e)
         {
             try

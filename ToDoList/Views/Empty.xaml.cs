@@ -18,22 +18,32 @@ using ToDoList.ViewModels;
 
 namespace ToDoList.Views
 {
-
+    /// <summary>
+    /// Code-behind za plikiem Empty.xaml
+    ///  </summary>
     public partial class Empty : UserControl
     {
+        /// <summary>
+         /// polaczenie do bazy danych
+          ///  </summary>
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True");
         public Empty()
         {
 
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Metoda wywolana przy uruchomieniu okna
+        ///  </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             CheckIfCompleted();
             Displaydata();
 
         }
+        /// <summary>
+        /// Wyswietlenie danych do datagrida z bazy danych
+        ///  </summary>
         public void Displaydata()
         {
             SqlCommand comm = new SqlCommand("SELECT Id, text, data FROM tasks ORDER BY data ASC", conn);
@@ -52,15 +62,9 @@ namespace ToDoList.Views
                 EmptyTasks.Visibility = Visibility.Visible;
             }
         }
-        public void DisplayDataHandler()
-        {
-            Displaydata();
-        }
-        static public void Refresh()
-        {
-            OnGoing Ongoing = new OnGoing();
-            Ongoing.Displaydata();
-        }
+        /// <summary>
+        /// usuniecie rekordu.
+        ///  </summary>
         void DeleteRow(string a)
         {
             SqlCommand command = new SqlCommand();
@@ -71,6 +75,9 @@ namespace ToDoList.Views
             conn.Close();
 
         }
+        /// <summary>
+        /// Metoda wywolana po nacisnieciu usun z contextmenu w datagridzie.
+        ///  </summary>
         private void Usun_Click(object sender, RoutedEventArgs e)
         {
             DataRowView drv = (DataRowView)EmptyTasks.SelectedItem;
@@ -78,7 +85,9 @@ namespace ToDoList.Views
             DeleteRow(a);
             Displaydata();
         }
-
+        /// <summary>
+        /// metoda sprawdzajaca czy jakeis zadania nie sa przeszle.
+        ///  </summary>
         private void CheckIfCompleted()
         {
             DateTime dt = DateTime.Now;

@@ -33,6 +33,9 @@ namespace ToDoList
         public float suma = 0;
         public float wynik = 0;
         public decimal CompletedValue = 0;
+        /// <summary>
+        /// polaczenie
+        /// </summary>
         private static SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;MultipleActiveResultSets=True");
        
         public MainWindow()
@@ -48,6 +51,9 @@ namespace ToDoList
 
 
         }
+        /// <summary>
+        /// funkcja zliczajaca udane i nieudane zadania, zeby pozniej moc procentowo okreslic ilosc wykonanych pomyslnie zadan.
+        /// </summary>
         private void Zliczanie()
         {
             List<string> Udane = new List<string>();
@@ -108,6 +114,9 @@ namespace ToDoList
             }
 
         }
+        /// <summary>
+        /// zwraca % wartosc wykonanych zadan.
+        /// </summary>
         public double Get_CompletedValue()
         {
             // suma = temp + NieUdane.Count();
@@ -115,27 +124,39 @@ namespace ToDoList
             CompletedValue = Convert.ToDecimal(Math.Round(wynik, 0));
             return Convert.ToDouble(CompletedValue);
         }
+        /// <summary>
+        /// Wyswietlenie OnGoing strony poprzez model MVVM
+        /// </summary>
         private void OnGoingTasks_Bttn_Click(object sender, RoutedEventArgs e)
         {
             a = true;
             DataContext = new OnGoingModel();
         }
+        /// <summary>
+        /// Wyswietlenie Completed strony poprzez model MVVM
+        /// </summary>
         private void CompletedTasks_Bttn_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new CompletedModel();
         }
-
+        /// <summary>
+        /// Wyswietlenie Udane strony poprzez model MVVM
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new UdaneModel();
         }
-
+        /// <summary>
+        /// Wyswietlenie NieUdane strony poprzez model MVVM
+        /// </summary>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             DataContext = new NieUdaneModel();
         }
 
-
+        /// <summary>
+        /// funkcja dodajaca zadanie do bazy danych tasks z wartosciami podanymi w parametrach
+        /// </summary>
         private void Create_Task_Query(string name_of_task, string date, string time)
         {
             SqlCommand command = new SqlCommand();
@@ -160,12 +181,17 @@ namespace ToDoList
             }
 
         }
-        
+        /// <summary>
+        /// Funkcja sprawdzajaca czy uzytkownik przypadkiem nie chce ustawic zadania na przeszla date.
+        /// </summary>
         static public int CompareDates(DateTime actual, DateTime Task)
         {
             int value = DateTime.Compare(actual, Task);
             return value;
         }
+        /// <summary>
+        /// Button "utworz" tworzacy zadanie i uzywajacy poprzednie funkcje do dodania zadania, pobiera dane z kontrolek jak textbox, data i time picker, sprawdza czy nie sa puste/przeszle, i dodaje rekord do bazy, oraz przerzuca pomiedzy stronami modelu MVVM, jak OnGoing i Empty, by moc odswiezyc wyswietlane rekordy.
+        /// </summary>
         private void Create_Task_Click(object sender, RoutedEventArgs e)
         {
          //   Check(); 
